@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ClassroomTest {
 
@@ -30,11 +30,7 @@ public class ClassroomTest {
             names.add(student.getName());
         }
 
-        List<String> expected = classrooms.stream()
-                .flatMap(classroom -> classroom.getStudents().stream())
-                .sorted(Comparator.comparing(Student::getAge))
-                .map(student -> student.getName())
-                .collect(Collectors.toList());
+        List<String> expected = Arrays.asList("Pedro Paulo", "Marcelo", "Ana", "Marcos", "Mateus", "Luana", "Pedro Henrique", "Monique", "Julia", "Marcia"); // Implemente aqui a solução utilizando o Stream API
 
         System.out.println("Antes: " + names);
         System.out.println("Depois: " + expected);
@@ -55,12 +51,7 @@ public class ClassroomTest {
             }
         }
 
-        int expected = classrooms.stream()
-                .flatMap(classroom -> classroom.getStudents().stream())
-                .filter(student -> student.getName().startsWith("M"))
-                .filter(student -> student.getAge() >= 18)
-                .mapToInt(Student::getAge)
-                .sum();
+        int expected = 39; // Implemente aqui a solução utilizando o Stream API
 
         System.out.println("Antes: " + sum);
         System.out.println("Depois: " + expected);
